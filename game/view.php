@@ -12,6 +12,8 @@
                 } ?>
             }
         </script>
+
+        <!--    Jeu du Puissance 4    -->
         <center>
             <table style="background-color: blue;">
                 <?php
@@ -28,6 +30,7 @@
             </table>
         </center>
 
+        <!--    Texte en dessous du jeu    -->
         <?php if ($_SESSION['win'] == 0) { ?>
             <center> <h2> Au tour de <?php echo currentPlayer() ?> (<?php echo currentColor() ?>)  </h2> </center>
         <?php } else { ?>

@@ -1,0 +1,11 @@
+Jeu du puissance 4, HENNEQUIN Maxime, 09/03/23
+
+PHP version: 8.0.26
+MySQL version: 8.0.31
+
+
+Lancer le serveur (Wamp par exemple)
+Lancer index.php
+Choisir son pseudo
+L'adversaire choisit aussi le sien
+Jouer !

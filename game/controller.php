@@ -2,6 +2,7 @@
     include_once("model.php");
     include_once("param-bdd.php");
 
+    // Formulaire rempli
     if (isset($_POST["user1"]) && isset($_POST["user2"]) && isset($_POST["colors"])){
         // Pas de partie en cours
         if (!isset($_SESSION["win"])) {
@@ -29,6 +30,7 @@
         exit();
     }
 
+    // Click
     if (isset($_GET["cell"])) {
         if ($_SESSION["win"] == 0) {
             $line = substr($_GET["cell"], 0,1);
@@ -47,17 +49,6 @@
             }
         }
     }
-        //        $mysqli = new mysqli("localhost","root","","bdd_php");
-        //        $id = 1;
-        //        $caseColonne = 0;
-        //        $caseLigne = 0;
-        //        $valeur = 0;
-
-        //        $req = " INSERT INTO puissance4 ('id','caseColonne','caseLigne','valeur') VALUES ('$id', $caseColonne, $caseLigne,'$valeur' ); ";
-        //        $req2 = "SELECT * FROM puissance4";
-        //        $result = $mysqli->query($req) ;
-        //        echo $result;
-
 
     include_once("view.php");
     loadGame();

@@ -50,15 +50,6 @@
     }
 
     function addResultToBDD() {
-/*        $idcom = new mysqli(HOST, USER, PASS, "puissance4");
-
-        $id =
-
-        $requete = "INSERT INTO savepuissance4 VALUES ('1','sedgvgrde','deggsrgs','Aucun','rgvszrdgvszrdgvsrgvsrdgvsrdgrszegserdfgvseregvsxrfdgvbfrtbghdertfgbrftgerdgfv')";
-        $result = $idcom -> query($requete);
-
-        $idcom -> close();*/
-
         $idcom = new mysqli(HOST,USER,PASS,"puissance4");
         
         if (!$idcom) {
@@ -96,13 +87,6 @@
         }
 
         $_SESSION["grid"][$line][$cols] = currentPlayer() == getPlayer1() ? 1 : 2;
-
-/*        for ($i = 0; $i < $_SESSION["nbLine"]; $i++) {
-            for ($j = 0; $j < $_SESSION["nbCols"]; $j++) {
-                echo $_SESSION["grid"][$i][$j]."   ";
-            }
-            echo "<br>";
-        }*/
     }
 
     function loadGame() {
