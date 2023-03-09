@@ -4,14 +4,14 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-    <body>
-    <script>
-        function ToColorById(id, color) {
-            <?php if ($_SESSION['win'] == 0) {
-                echo "<script>", "document.getElementById(id).src = color + '.png'", "</script>";
-            } ?>
-        }
-    </script>
+    <body class="center">
+        <script>
+            function ToColorById(id, color) {
+                <?php if ($_SESSION['win'] == 0) {
+                    echo ("<script> document.getElementById(id).src = color + '.png' </script>");
+                } ?>
+
+        </script>
         <center>
             <table style="background-color: blue;">
                 <?php
@@ -33,8 +33,10 @@
         <?php } else { ?>
             <center>
                 <h2> Bravo <?php echo $_SESSION['win'] ?> tu as gagné ! </h2>
-                <a href="controller.php?clean=true"> Retour au menu </a> <br>
-                <a href="controller.php?replay=true"> Rejouer </a>
+                <div class="button-group">
+                    <a class="button" href="controller.php?clean=true"> Retour au menu </a>
+                    <a class="button" href="controller.php?replay=true"> Rejouer </a>
+                </div>
             </center>
         <?php } ?>
         <br/>

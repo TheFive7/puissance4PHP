@@ -1,50 +1,93 @@
-/* Appliquer une police de caractère spécifique à tout le document */
-body {
-    font-family: Arial, sans-serif;
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
-/* Centrer le titre */
-h2 {
+.title {
     text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
 }
 
-/* Modifier la taille du champ de saisie du nom des joueurs */
-input[type="text"] {
-    width: 250px;
-    padding: 5px;
-    font-size: 16px;
+.form-group {
+    margin-bottom: 20px;
 }
 
-/* Modifier l'apparence des labels */
-label {
+.label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
     font-weight: bold;
 }
 
-/* Modifier l'apparence des boutons */
-button {
+.input {
+    display: block;
+    width: 100%;
     padding: 10px;
-    border-radius: 5px;
-    font-size: 18px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-}
-
-/* Modifier l'apparence du select */
-select {
-    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
     font-size: 16px;
 }
 
-/* Modifier l'apparence de l'option "Jaune" */
-select option[value="Jaune"] {
-    background-color: yellow;
+.select {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-/* Modifier l'apparence de l'option "Rouge" */
-select option[value="Rouge"] {
-    background-color: red;
-    color: white;
+.select select {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    appearance: none;
+}
+
+.select:after {
+    content: "\25BC";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.button:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.text {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
 }
