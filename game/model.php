@@ -12,8 +12,8 @@
     session_start();
 
     function initGame() {
-        $_SESSION["user1"] = isset($_SESSION['lastuser1']) ? $_SESSION['lastuser1'] : $_POST["user1"];
-        $_SESSION["user2"] = isset($_SESSION['lastuser2']) ? $_SESSION['lastuser2'] : $_POST["user2"];
+        $_SESSION["user1"] = htmlentities(isset($_SESSION['lastuser1']) ? $_SESSION['lastuser1'] : $_POST["user1"]);
+        $_SESSION["user2"] = htmlentities(isset($_SESSION['lastuser2']) ? $_SESSION['lastuser2'] : $_POST["user2"]);
         $_SESSION["currentUser"] = $_SESSION["user1"];
 
         $_SESSION["color1"] = isset($_SESSION['lastcolors']) ? $_SESSION['lastcolors'] : $_POST["colors"];
@@ -46,6 +46,40 @@
             for ($j = 0; $j < $_SESSION["nbCols"]; $j++) {
                 $_SESSION["grid"][$i][$j] = 0;
             }
+        }
+    }
+
+    function addResultToBDD() {
+/*        $idcom = new mysqli(HOST, USER, PASS, "puissance4");
+
+        $id =
+
+        $requete = "INSERT INTO savepuissance4 VALUES ('1','sedgvgrde','deggsrgs','Aucun','rgvszrdgvszrdgvsrgvsrdgvsrdgrszegserdfgvseregvsxrfdgvbfrtbghdertfgbrftgerdgfv')";
+        $result = $idcom -> query($requete);
+
+        $idcom -> close();*/
+
+        $idcom = new mysqli(HOST,USER,PASS,"puissance4");
+        
+        if (!$idcom) {
+            echo "<script type=text/javascript> alert('Connexion à la base de données impossible. Sauvegarde échouée.') </script>";
+        } else {
+            $user1 = $_SESSION['user1'];
+            $user2 = $_SESSION['user2'];
+            $winner = $_SESSION['win'] == 1 ? $user1 : $user2;
+            $gridData = json_encode($_SESSION['grid']);
+
+            $requete = "INSERT INTO savepuissance4 (user1, user2, winner, gridData) VALUES ('$user1', '$user2', '$winner', '$gridData')";
+
+            echo $requete;
+
+            $result = $idcom -> query($requete);
+
+            if (!$result) {
+                echo "<script type=text/javascript> alert('Erreur dans la base de données. Sauvegarde échouée.') </script>";
+            }
+
+            $idcom -> close();
         }
     }
 
@@ -123,10 +157,6 @@
         }
 
         return false;
-    }
-
-    function stopGame() {
-
     }
 
     function switchUser() {

@@ -1,5 +1,6 @@
 <?php
     include_once("model.php");
+    include_once("param-bdd.php");
 
     if (isset($_POST["user1"]) && isset($_POST["user2"]) && isset($_POST["colors"])){
         // Pas de partie en cours
@@ -22,6 +23,7 @@
 
     // Tout effacer
     if (isset($_GET["clean"])) {
+        addResultToBDD();
         clean();
         header('Location: index.php');
         exit();

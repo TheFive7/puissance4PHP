@@ -8,9 +8,9 @@
         <script>
             function ToColorById(id, color) {
                 <?php if ($_SESSION['win'] == 0) {
-                    echo ("<script> document.getElementById(id).src = color + '.png' </script>");
+                    echo("document.getElementById(id).src = color + '.png';");
                 } ?>
-
+            }
         </script>
         <center>
             <table style="background-color: blue;">
