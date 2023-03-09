@@ -88,7 +88,7 @@
         $cols = substr($indice, 1,2);
 
         if ($line != getLine() - 1) {
-            for ($i = 0; $i < getLine(); $i++) {
+            for ($i = 0; $i < getLine() - 1; $i++) {
                 if ($_SESSION["grid"][$line + 1][$cols] == 0) {
                     $line = $i + 1;
                 }
