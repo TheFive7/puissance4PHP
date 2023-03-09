@@ -12,16 +12,34 @@
     session_start();
 
     function initGame() {
-        $_SESSION["user1"] = $_POST["user1"];
-        $_SESSION["user2"] = $_POST["user2"];
+        $_SESSION["user1"] = isset($_SESSION['lastuser1']) ? $_SESSION['lastuser1'] : $_POST["user1"];
+        $_SESSION["user2"] = isset($_SESSION['lastuser2']) ? $_SESSION['lastuser2'] : $_POST["user2"];
         $_SESSION["currentUser"] = $_SESSION["user1"];
 
-        $_SESSION["color1"] = $_POST["colors"];
+        $_SESSION["color1"] = isset($_SESSION['lastcolors']) ? $_SESSION['lastcolors'] : $_POST["colors"];
         $_SESSION["currentColor"] = $_SESSION["color1"];
 
         $_SESSION["nbLine"] = $GLOBALS["nbLine"];
         $_SESSION["nbCols"] = $GLOBALS["nbCols"];
 
+        $_SESSION["win"] = 0;
+
+        for ($i = 0; $i < $_SESSION["nbLine"]; $i++) {
+            for ($j = 0; $j < $_SESSION["nbCols"]; $j++) {
+                $_SESSION["grid"][$i][$j] = 0;
+            }
+        }
+    }
+
+    function chooseGame() {
+        $_SESSION["lastuser1"] = $_POST["user1"];
+        $_SESSION["lastuser2"] = $_POST["user2"];
+        $_SESSION["lastcolors"] = $_POST["colors"];
+
+        header('Location: index.php?exist=true');
+    }
+
+    function clean() {
         $_SESSION["win"] = 0;
 
         for ($i = 0; $i < $_SESSION["nbLine"]; $i++) {
@@ -45,12 +63,12 @@
 
         $_SESSION["grid"][$line][$cols] = currentPlayer() == getPlayer1() ? 1 : 2;
 
-        for ($i = 0; $i < $_SESSION["nbLine"]; $i++) {
+/*        for ($i = 0; $i < $_SESSION["nbLine"]; $i++) {
             for ($j = 0; $j < $_SESSION["nbCols"]; $j++) {
                 echo $_SESSION["grid"][$i][$j]."   ";
             }
             echo "<br>";
-        }
+        }*/
     }
 
     function loadGame() {
@@ -105,6 +123,10 @@
         }
 
         return false;
+    }
+
+    function stopGame() {
+
     }
 
     function switchUser() {

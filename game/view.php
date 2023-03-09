@@ -2,21 +2,14 @@
     <head>
         <title>Puissance 4</title>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
     <script>
-        function ToColorById(id, color){
-            document.getElementById(id).src = color + ".png";
-
-            $.ajax({
-                url: 'controller.php',
-                type: 'POST',
-                data: { nom: 'Dupont' },
-                success: function(response) {
-                    // La réponse du serveur est stockée dans la variable "response"
-                    console.log(response);
-                }
-            });
+        function ToColorById(id, color) {
+            <?php if ($_SESSION['win'] == 0) {
+                echo "<script>", "document.getElementById(id).src = color + '.png'", "</script>";
+            } ?>
         }
     </script>
         <center>
@@ -35,7 +28,15 @@
             </table>
         </center>
 
-        <center> <h2> Au tour de <?php echo currentPlayer() ?> (<?php echo currentColor(), $_SESSION["win"]?>)  </h2> </center>
+        <?php if ($_SESSION['win'] == 0) { ?>
+            <center> <h2> Au tour de <?php echo currentPlayer() ?> (<?php echo currentColor() ?>)  </h2> </center>
+        <?php } else { ?>
+            <center>
+                <h2> Bravo <?php echo $_SESSION['win'] ?> tu as gagné ! </h2>
+                <a href="controller.php?clean=true"> Retour au menu </a> <br>
+                <a href="controller.php?replay=true"> Rejouer </a>
+            </center>
+        <?php } ?>
         <br/>
         <br/>
     </body>
