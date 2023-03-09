@@ -1,8 +1,8 @@
 Jeu du puissance 4, HENNEQUIN Maxime, 09/03/23
+Lien GitHub: https://github.com/TheFive7/puissance4PHP
 
 PHP version: 8.0.26
 MySQL version: 8.0.31
-
 
 Lancer le serveur (Wamp par exemple)
 Lancer index.php
